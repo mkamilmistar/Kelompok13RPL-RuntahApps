@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/volunteer', 'VolunteerController@index');
+Route::post('/volunteer/create', 'VolunteerController@create');
+Route::get('/volunteer/{id}/edit', 'VolunteerController@edit');
+Route::post('/volunteer/{id{/update', 'VolunteerController@update');
