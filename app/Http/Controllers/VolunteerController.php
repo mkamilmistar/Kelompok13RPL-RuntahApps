@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data_volunteer = \App\Volunteer::all();
+        if ($request->has('cari')) {
+            $data_volunteer = \App\Volunteer::where('nama_depan', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $data_volunteer = \App\Volunteer::all();
+        }
         return view('Volunteer.index', ['data_volunteer' => $data_volunteer]);
     }
 
@@ -17,10 +21,23 @@ class VolunteerController extends Controller
         \App\Volunteer::create($request->all());
         return redirect('/volunteer')->with('sukses', 'Data berhasil ditambahkan');
     }
-
-    public function update($id)
+    public function edit($id)
     {
-        $volunteer = \App\Mahasiswa::find($id);
-        return view('/volunteer', ['volunteer' => $volunteer]);
+        $volunteer = \App\Volunteer::find($id);
+        return view('/volunteer/edit', ['volunteer' => $volunteer]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $volunteer = \App\Volunteer::find($id);
+        $volunteer->update($request->all());
+        return redirect('/volunteer')->with('sukses', 'Data Berhasil diedit');
+    }
+
+    public function delete($id)
+    {
+        $volunteer = \App\Volunteer::find($id);
+        $volunteer->delete();
+        return redirect('/volunteer')->with('sukses', 'Data berhasil dihapus');
     }
 }

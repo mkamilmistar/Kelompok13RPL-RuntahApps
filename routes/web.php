@@ -12,10 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Volunteer.home');
 });
 
-Route::get('/volunteer', 'VolunteerController@index');
-Route::post('/volunteer/create', 'VolunteerController@create');
-Route::get('/volunteer/{id}/edit', 'VolunteerController@edit');
-Route::post('/volunteer/{id{/update', 'VolunteerController@update');
+Route::get('/logout', 'AuthController@logout');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/login', 'AuthController@login')->name('login');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/volunteer', 'VolunteerController@index');
+    Route::post('/volunteer/create', 'VolunteerController@create');
+    Route::get('/volunteer/{id}/edit', 'VolunteerController@edit');
+    Route::post('/volunteer/{id}/update', 'VolunteerController@update');
+    Route::get('/volunteer/{id}/delete', 'VolunteerController@delete');
+});
