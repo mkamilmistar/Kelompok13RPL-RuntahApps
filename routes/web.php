@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Volunteer.home');
-});
+//route untuk sites
+Route::get('/', 'SiteController@home');
+Route::get('/about', 'SiteController@about');
 
+//route untuk admin
 Route::get('/logout', 'AuthController@logout');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/login', 'AuthController@login')->name('login');
@@ -22,13 +23,8 @@ Route::get('/login', 'AuthController@login')->name('login');
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/volunteer', 'VolunteerController@index');
     Route::post('/volunteer/create', 'VolunteerController@create');
-    Route::get('/volunteer/{id}/edit', 'VolunteerController@edit');
-    Route::post('/volunteer/{id}/update', 'VolunteerController@update');
-    Route::get('/volunteer/{id}/delete', 'VolunteerController@delete');
-});
-
-Route::group(['middleware' => ['auth', 'checkRole:admin,volunteer']], function () {
-
-    //nanti diisi dengan route yang boleh dimasuki volunteer
-
+    Route::get('/volunteer/{volunteer}/edit', 'VolunteerController@edit');
+    Route::post('/volunteer/{volunteer}/update', 'VolunteerController@update');
+    Route::get('/volunteer/{volunteer}/delete', 'VolunteerController@delete');
+    Route::get('/dashboard', 'VolunteerController@dashboard');
 });

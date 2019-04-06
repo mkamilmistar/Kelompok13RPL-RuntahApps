@@ -1,10 +1,5 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('content')
-@if(session('sukses'))
-<div class="alert alert-success" role="alert">
-    {{session('sukses')}}
-</div>
-@endif
 <!-- Table Baru -->
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Volunteer</h1>
@@ -55,7 +50,7 @@
                                     <td>{{$volunteer -> alamat}}</td>
                                     <td>
                                         <a href="/volunteer/{{$volunteer->id}}/edit" type="button" class="btn btn-warning">Edit</a>
-                                        <a href="/volunteer/{{$volunteer->id}}/delete" type="button" class="btn btn-danger">Hapus</a>
+                                        <a href="#" type="button" class="btn btn-danger delete" volunteer-id="{{$volunteer->id}}">Hapus</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -122,4 +117,27 @@
     </div>
 </div>
 
-@endsection 
+@endsection
+
+@section('script')
+<script>
+    $('.delete').click(function() {
+        var volunteer_id = $(this).attr('volunteer-id');
+        swal({
+                title: "Yakin?",
+                text: "Ingin dihapus data volunteer dengan id " + volunteer_id + "?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                console.log(willDelete);
+                if (willDelete) {
+                    window.location = "/volunteer/" + volunteer_id + "/delete";
+                } else {
+
+                }
+            });
+    });
+</script>
+@endsection

@@ -14,12 +14,13 @@
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin/assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="{{asset('admin/assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="{{asset('admin/assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    <!-- Toaster -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body id="page-top">
@@ -28,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.includes._sidebar')
+        @include('admin.layouts.includes._sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -58,7 +59,7 @@
                     </form>
 
                     <!-- Topbar Navbar -->
-                    @include('layouts.includes._navbar')
+                    @include('admin.layouts.includes._navbar')
 
                 </nav>
                 <!-- End of Topbar -->
@@ -127,7 +128,19 @@
     <script src="{{asset('admin/assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('admin/assets/js/demo/chart-pie-demo.js')}}"></script>
 
+    <!-- sweet allert scripts -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <!-- toastr scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has('sukses'))
+        // Display a success toast, with a title
+        toastr.success("{{Session::get('sukses')}}", "Sukses")
+        @endif
+    </script>
+    @yield('script')
 
 </body>
 

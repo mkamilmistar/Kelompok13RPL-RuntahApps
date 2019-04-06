@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Volunteer;
+use App\User;
+
 
 class VolunteerController extends Controller
 {
@@ -13,7 +16,13 @@ class VolunteerController extends Controller
         } else {
             $data_volunteer = \App\Volunteer::all();
         }
-        return view('Volunteer.index', ['data_volunteer' => $data_volunteer]);
+        return view('admin.Volunteer.index', ['data_volunteer' => $data_volunteer]);
+    }
+
+    public function dashboard()
+    {
+
+        return view('admin.Volunteer.dashboard');
     }
 
     public function create(Request $request)
@@ -33,22 +42,19 @@ class VolunteerController extends Controller
         return redirect('/volunteer')->with('sukses', 'Data berhasil ditambahkan');
     }
 
-    public function edit($id)
+    public function edit(volunteer $volunteer)
     {
-        $volunteer = \App\Volunteer::find($id);
         return view('/volunteer/edit', ['volunteer' => $volunteer]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, volunteer $volunteer)
     {
-        $volunteer = \App\Volunteer::find($id);
         $volunteer->update($request->all());
         return redirect('/volunteer')->with('sukses', 'Data Berhasil diedit');
     }
 
-    public function delete($id)
+    public function delete(volunteer $volunteer)
     {
-        $volunteer = \App\Volunteer::find($id);
         $volunteer->delete();
         return redirect('/volunteer')->with('sukses', 'Data berhasil dihapus');
     }
