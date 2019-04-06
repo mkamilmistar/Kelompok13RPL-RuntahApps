@@ -18,9 +18,21 @@ class VolunteerController extends Controller
 
     public function create(Request $request)
     {
-        \App\Volunteer::create($request->all());
+        //insert ke table volunteer
+        $user = new \App\User;
+        $user->role = 'volunteer';
+        $user->name = $request->nama_depan;
+        $user->email = $request->email;
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = str_random(60);
+        $user->save();
+
+        //insert ke table volunteer
+        $request->request->add(['user_id' => $user->id]);
+        $volunteer = \App\Volunteer::create($request->all());
         return redirect('/volunteer')->with('sukses', 'Data berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $volunteer = \App\Volunteer::find($id);

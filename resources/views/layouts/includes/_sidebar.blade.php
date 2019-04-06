@@ -9,7 +9,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -34,4 +34,4 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-</ul> 
+</ul>
