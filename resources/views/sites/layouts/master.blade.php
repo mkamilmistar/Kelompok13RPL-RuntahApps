@@ -45,7 +45,11 @@
         </div>
 
         <!-- Navbar Area -->
+
+
         @include('sites.layouts.includes._navbar')
+
+
     </header>
     <!-- ##### Header Area End ##### -->
 

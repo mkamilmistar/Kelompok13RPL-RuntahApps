@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if (auth::attempt($request->only('email', 'password'))) {
-            return redirect('/volunteer');
+            return redirect('/');
         }
         return redirect('/login');
     }
@@ -23,6 +23,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
