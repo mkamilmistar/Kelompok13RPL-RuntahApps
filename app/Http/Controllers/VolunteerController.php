@@ -44,7 +44,7 @@ class VolunteerController extends Controller
 
     public function edit(volunteer $volunteer)
     {
-        return view('/volunteer/edit', ['volunteer' => $volunteer]);
+        return view('admin/volunteer/edit', ['volunteer' => $volunteer]);
     }
 
     public function update(Request $request, volunteer $volunteer)
