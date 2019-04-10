@@ -37,6 +37,8 @@
                                     <td><b>Jenis Kelamin</b></td>
                                     <td><b>Nomor Telepon</b></td>
                                     <td><b>Alamat</b></td>
+                                    <td><b>NIK Pengguna</b></td>
+                                    <td><b>Poin</b></td>
                                     <td><b>Action</b></td>
                                 </tr>
                             </thead>
@@ -48,6 +50,8 @@
                                     <td>{{$volunteer -> jenis_kelamin}}</td>
                                     <td>{{$volunteer -> nomor_telepon}}</td>
                                     <td>{{$volunteer -> alamat}}</td>
+                                    <td>{{$volunteer -> nik_pengguna}}</td>
+                                    <td>{{$volunteer -> poin}}</td>
                                     <td>
                                         <a href="/volunteer/{{$volunteer->id}}/edit" type="button" class="btn btn-warning">Edit</a>
                                         <a href="#" type="button" class="btn btn-danger delete" volunteer-id="{{$volunteer->id}}">Hapus</a>

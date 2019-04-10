@@ -22,6 +22,7 @@ class CreateTableVolunteer extends Migration
             $table->text('alamat');
             $table->string('nik_pengguna');
             $table->string('email');
+            $table->string('poin');
             $table->timestamps();
         });
     }

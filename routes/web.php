@@ -13,12 +13,15 @@
 
 //route untuk sites
 Route::get('/', 'SiteController@home');
+Route::get('/register', 'SiteController@register');
+Route::post('/postregister', 'SiteController@postregister');
 Route::get('/about', 'SiteController@about');
 
 //route untuk admin
 Route::get('/logout', 'AuthController@logout');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/login', 'AuthController@login')->name('login');
+
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/volunteer', 'VolunteerController@index');

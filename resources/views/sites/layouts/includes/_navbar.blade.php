@@ -73,7 +73,7 @@
                     @if(Auth::guest())
                     <!-- Register / Login -->
                     <div class="register-login-area">
-                        <a href="#" class="btn">Register</a>
+                        <a href="/register" class="btn">Register</a>
                         <a href="/login" class="btn active">Login</a>
                     </div>
                     @else
