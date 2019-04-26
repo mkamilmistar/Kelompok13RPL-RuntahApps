@@ -16,6 +16,12 @@ Route::get('/', 'SiteController@home');
 Route::get('/register', 'SiteController@register');
 Route::post('/postregister', 'SiteController@postregister');
 Route::get('/about', 'SiteController@about');
+Route::group(['middleware' => ['auth', 'checkRole:admin,volunteer']], function () {
+    Route::get('/profile', 'SiteController@profile');
+});
+Route::get('/diy', 'SiteController@diy');
+Route::get('/information', 'SiteController@information');
+
 
 //route untuk admin
 Route::get('/logout', 'AuthController@logout');

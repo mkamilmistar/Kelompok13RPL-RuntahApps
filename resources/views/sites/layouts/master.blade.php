@@ -53,8 +53,6 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-
-
     @yield('content')
 
     <!-- ##### Footer Area Start ##### -->
@@ -72,6 +70,9 @@
     <script src="{{asset('/sites')}}/js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="{{asset('/sites')}}/js/active.js"></script>
+
+
+</body>
 </body>
 
 </html>

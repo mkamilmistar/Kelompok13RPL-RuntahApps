@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Volunteer;
+use App\User;
 
 class SiteController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        return view('sites.home');
+        $data_volunteer = \App\Volunteer::all();
+        return view('sites.home', ['data_volunteer' => $data_volunteer]);
     }
 
     public function about()
@@ -36,5 +39,21 @@ class SiteController extends Controller
         $request->request->add(['user_id' => $user->id]);
         $volunteer = \App\Volunteer::create($request->all());
         return redirect('/')->with('sukses', 'Berhasil Mendaftar!');
+    }
+
+    public function profile($id)
+    {
+        $volunteer = \App\Volunteer::find($id);
+        return view('sites.profile', ['volunteer' => $volunteer]);
+    }
+
+    public function diy()
+    {
+        return view('sites.diy');
+    }
+
+    public function information()
+    {
+        return view('sites.information');
     }
 }

@@ -53,9 +53,10 @@ class VolunteerController extends Controller
         return redirect('/volunteer')->with('sukses', 'Data Berhasil diedit');
     }
 
-    public function delete(volunteer $volunteer)
+    public function delete(volunteer $volunteer, user $user)
     {
         $volunteer->delete();
+        $user->delete();
         return redirect('/volunteer')->with('sukses', 'Data berhasil dihapus');
     }
 }
