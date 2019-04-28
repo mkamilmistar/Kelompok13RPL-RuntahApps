@@ -7,3 +7,6 @@ Aplikasi Runtah merupakan aplikasi yang memungkinkann pengguna bekerjasama denga
 1. Intan Aida R.
 2. M. Kamil
 3. Tengku Sandra Alyssa
+
+## Repo ini pindah ke yang baru karena ada error
+https://github.com/mkamilmistar/Kelompok13RPL-RuntahWebNew
